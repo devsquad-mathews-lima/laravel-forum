@@ -38,12 +38,15 @@ class PostController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Post $post)
+    public function show(Post $post): Response
     {
-        //
+        PostResource::withoutWrapping();
+
+        $post->load('user');
+
+        return Inertia::render('Posts/Show', [
+            'post' => PostResource::make($post),
+        ]);
     }
 
     /**
