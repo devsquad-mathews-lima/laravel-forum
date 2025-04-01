@@ -37,7 +37,7 @@ class TestingServiceProvider extends ServiceProvider
 
             $this
                 ->has($key)
-                ->where("$key.data", $compiledResource['data'])
+                ->where("$key.data", $compiledResource)
                 ->hasAll("$key.data", "$key.links", "$key.meta")
                 ->etc();
 

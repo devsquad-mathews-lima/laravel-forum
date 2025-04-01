@@ -2,7 +2,9 @@
 
 namespace Feature\Controllers\PostController;
 
+use App\Http\Resources\CommentResource;
 use App\Http\Resources\PostResource;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use PHPUnit\Framework\Attributes\Test;
@@ -31,5 +33,16 @@ class ShowTest extends TestCase
         $this
             ->get(route('posts.show', $post))
             ->assertHasResource('post', PostResource::make($post));
+    }
+
+    #[Test]
+    public function it_passes_comments_to_the_view(): void
+    {
+        $post = Post::factory()->create();
+        $comments = Comment::factory(2)->for($post)->create();
+
+        $this
+            ->get(route('posts.show', $post))
+            ->assertHasPaginatedResource('comments', CommentResource::collection($comments));
     }
 }
