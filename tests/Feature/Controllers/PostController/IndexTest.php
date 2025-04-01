@@ -1,6 +1,6 @@
 <?php
 
-namespace Feature\Controllers\PostController;
+namespace Tests\Feature\Controllers\PostController;
 
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Inertia\Testing\AssertableInertia;
