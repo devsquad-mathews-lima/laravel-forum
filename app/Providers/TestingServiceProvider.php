@@ -16,7 +16,7 @@ class TestingServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        if (!$this->app->runningUnitTests()) {
+        if (! $this->app->runningUnitTests()) {
             return;
         }
 
@@ -26,14 +26,15 @@ class TestingServiceProvider extends ServiceProvider
             $this
                 ->has($key)
                 ->where("$key.data", $compiledResource['data'])
-                ->hasAll("$key.data", "$key.links", "$key.meta");
+                ->hasAll("$key.data", "$key.links", "$key.meta")
+                ->etc();
 
             return $this;
         });
 
         TestResponse::macro('assertHasPaginatedResource', function (string $key, ResourceCollection $resource) {
             return $this->assertInertia(
-                fn(AssertableInertia $inertia) => $inertia->hasPaginatedResource($key, $resource)
+                fn (AssertableInertia $inertia) => $inertia->hasPaginatedResource($key, $resource)
             );
         });
     }
