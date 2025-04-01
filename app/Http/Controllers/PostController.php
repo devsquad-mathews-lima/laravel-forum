@@ -13,7 +13,12 @@ class PostController extends Controller
     public function index(): Response
     {
         return Inertia::render('Posts/Index', [
-            'posts' => PostResource::collection(Post::query()->paginate()),
+            'posts' => PostResource::collection(
+                Post::query()
+                    ->latest()
+                    ->latest('id')
+                    ->paginate()
+            ),
         ]);
     }
 
