@@ -27,6 +27,8 @@ class IndexTest extends TestCase
         /** @var Collection<int, Post> $posts */
         $posts = Post::factory(3)->create();
 
+        $posts->each->load('user');
+
         $resource = PostResource::collection($posts->reverse());
 
         $this
