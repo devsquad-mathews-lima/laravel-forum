@@ -20,7 +20,7 @@ class PostFactory extends Factory
             'body' => Collection::times(
                 4,
                 static fn () => fake()->realText(1250)
-            )->join(PHP_EOL . PHP_EOL),
+            )->join(PHP_EOL.PHP_EOL),
         ];
     }
 }

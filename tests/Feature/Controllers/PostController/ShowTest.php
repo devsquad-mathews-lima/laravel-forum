@@ -5,7 +5,6 @@ namespace Feature\Controllers\PostController;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
-use Inertia\Testing\AssertableInertia;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
