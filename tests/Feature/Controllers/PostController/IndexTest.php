@@ -17,10 +17,9 @@ class IndexTest extends TestCase
     #[Test]
     public function it_should_return_the_correct_component(): void
     {
-        $this->get(route('posts.index'))
-            ->assertInertia(fn (AssertableInertia $inertia) => $inertia
-                ->component('Posts/Index', true)
-            );
+        $this
+            ->get(route('posts.index'))
+            ->assertInertiaComponent('Posts/Index');
     }
 
     #[Test]

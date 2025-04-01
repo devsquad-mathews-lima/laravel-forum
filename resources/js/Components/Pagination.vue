@@ -1,22 +1,10 @@
 <script setup lang="ts">
 import {Link} from '@inertiajs/vue3';
 import {computed} from "vue";
+import type {PaginatedData} from "@/types";
 
 const {meta} = defineProps<{
-    meta: {
-        current_page: number;
-        from: number;
-        last_page: number;
-        links: {
-            url: string | null;
-            label: string;
-            active: boolean;
-        }[];
-        path: string;
-        per_page: number;
-        to: number;
-        total: number;
-    };
+    meta: PaginatedData<unknown>['meta'];
 }>();
 
 const previousUrl = computed(() => meta.links[0].url ?? '');
