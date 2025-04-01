@@ -15,6 +15,7 @@ class PostController extends Controller
         return Inertia::render('Posts/Index', [
             'posts' => PostResource::collection(
                 Post::query()
+                    ->with('user')
                     ->latest()
                     ->latest('id')
                     ->paginate()
